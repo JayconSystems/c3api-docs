@@ -1,0 +1,35 @@
+{
+    "data": [
+	{
+	    "id": 17,
+	    "name": "Dr. Brown",
+	    "categoryid": 5,
+	    "mac": "01:23:45:67:89:ab",
+	    "major": 21,
+	    "minor": 17,
+	    "description": "Beacon embedded in Dr. Trevone Brown's badge",
+	    "last_battery": 67,
+	    "map_x": 267.87,
+	    "map_y": 2057.44,
+	    "zone_id": 12,
+	    "uuid": "0123456789abcdef",
+	    "missing": false
+	},
+	{
+	    "id": 21,
+	    "name": "Dr. Freeman",
+	    "categoryid": 5,
+	    "mac": "23:45:67:89:ab:cd",
+	    "major": 20,
+	    "minor": 16,
+	    "description": "Beacon embedded in Dr. Freeman's badge",
+	    "last_battery": 99,
+	    "map_x": 2670.87,
+	    "map_y": 205.44,
+	    "zone_id": 45,
+	    "uuid": "23456789abcdef01",
+	    "missing": false
+	}
+    ],
+    "status": 200
+}

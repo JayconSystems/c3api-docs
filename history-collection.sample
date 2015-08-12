@@ -1,0 +1,13 @@
+{
+    "data": [
+	{
+	    "beacon_id": 17,
+	    "map_x": 102.99,
+	    "map_y": 349.4,
+	    "zone_id": null,
+	    "timestamp": "2015-08-12 13:45:56",
+	    "state": "Missing"
+	},
+    ]
+    "status": 200
+}

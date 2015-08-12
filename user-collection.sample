@@ -1,0 +1,17 @@
+{
+    "data": [
+	{
+	    "id": 17,
+	    "name": "Imani Jackson",
+	    "email": "ijackson@gmail.com",
+	    "usertype": "ADMIN"
+	},
+	{
+	    "id": 21,
+	    "name": "Tiana Hightower",
+	    "email": "thigh47@gmail.com",
+	    "usertype": "MEMBER"
+	}
+    ], 
+    "status": 200,
+}

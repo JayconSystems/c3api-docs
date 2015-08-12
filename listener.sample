@@ -1,0 +1,10 @@
+{
+    "id": 17
+    "disabled": false
+    "name": "Lobby"
+    "mac": "0123456789ab"
+    "map_x": 100.384
+    "map_y": 203.23
+    "zone_id": 17
+    "missing": false
+}

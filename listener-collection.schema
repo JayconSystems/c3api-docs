@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://api.c3wireless.com/",
+    "required": true,
+    "properties": {
+        "data": {
+            "type": "array",
+            "required": true,
+            "items": {
+                "type": "object",
+                "properties": {
+        	    "id": {
+			"type": "integer",
+			"required": false
+		    },
+		    "disabled": {
+			"type": "boolean",
+			"required": false
+		    },
+		    "state": {
+			"type": "string",
+			"required": false
+		    },
+		    "name": {
+			"type": "string",
+			"required": true
+		    },
+		    "mac": {
+			"type": "string",
+			"required": true,
+			"minLength": 12,
+			"maxLength": 12
+		    },
+		    "description": {
+			"type": "string",
+			"required": false
+		    },
+		    "keywords": {
+			"type": "string",
+			"required": false
+		    },
+		    "map_x": {
+			"type": "number",
+			"required": false
+		    },
+		    "map_y": {
+			"type": "number",
+			"required": false
+		    },
+		    "zone_id": {
+			"type": "integer",
+			"required": false
+		    },
+		    "missing": {
+			"type": "boolean",
+			"required": false
+		    }
+		}
+	    }
+	},
+	"status": {
+	    "type": "integer",
+	    "required": true
+	},
+	"error": {
+	    "type": "string",
+	    "required": false
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "data": [
+	{
+	    "id": 17
+	    "disabled": false
+	    "name": "Lobby"
+	    "mac": "0123456789ab"
+	    "map_x": 100.384
+	    "map_y": 203.23
+	    "zone_id": 17
+	    "missing": false
+	},
+	{
+	    "id": 21
+	    "disabled": false
+	    "name": "Foyer"
+	    "mac": "23456789abcd"
+	    "map_x": 90.384
+	    "map_y": 213.23
+	    "zone_id": 17
+	    "missing": false
+	}
+    ],
+    "status": 200
+}

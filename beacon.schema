@@ -1,0 +1,83 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://api.c3wireless.com",
+    "required": true,
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "required": false
+        },
+	"disabled": {
+	    "type": "boolean",
+	    "required": false
+	},
+	"name": {
+	    "type": "string",
+	    "required": true
+	},
+	"state": {
+	    "type": "string",
+	    "required": false
+	},
+	"categoryid": {
+	    "type": "integer",
+	    "required": false
+	},
+	"subcategoryid": {
+	    "type": "integer",
+	    "required": false
+	},
+	"mac": {
+	    "type": "string",
+	    "required": true,
+	    "minLength": 17,
+	    "maxLength": 17
+	},
+	"major": {
+	    "type": "integer",
+	    "required": true
+	},
+	"minor": {
+	    "type": "integer",
+	    "required": true
+	},
+	"description": {
+	    "type": "string",
+	    "required": false
+	},
+	"keywords": {
+	    "type": "string",
+	    "required": false
+	},
+	"last_battery": {
+	    "type": "integer",
+	    "required": false,
+	    "maxValue": 100,
+	    "minValue": 0
+	},
+	"map_x": {
+	    "type": "number",
+	    "required": false
+	},
+	"map_y": {
+	    "type": "number",
+	    "required": false
+	},
+	"zone_id": {
+	    "type": "integer",
+	    "required": false
+	},
+	"uuid": {
+	    "type": "string",
+	    "required": true,
+	    "maxLength": 16,
+	    "minLength": 16
+	},
+	"missing": {
+	    "type": "boolean",
+	    "required": false
+	}
+    }
+}

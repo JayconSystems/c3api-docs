@@ -1,0 +1,19 @@
+{
+    "data": [
+	{
+	    "id": 17,
+	    "disabled": false,
+	    "name": "Entryway",
+	    "grid_string": "1,2,3,67,8,191",
+	    "color": "00ffaa"
+	},
+	{
+	    "id": 21,
+	    "disabled": false,
+	    "name": "Recovery Area",
+	    "grid_string": "17,72,73,767,78,171",
+	    "color": "ffffaa"
+	}
+    ],
+    status: 200
+}

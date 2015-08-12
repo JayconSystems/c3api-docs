@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://api.c3wireless.com",
+    "required": true,
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "required": false
+        },
+	"disabled": {
+	    "type": "boolean",
+	    "required": false
+	},
+	"name": {
+	    "type": "string",
+	    "required": true
+	},
+	"grid_string": {
+	    "type": "string",
+	    "required": true
+	},
+	"color": {
+	    "type": "string",
+	    "required": "true"
+	}
+    }
+}
+	
