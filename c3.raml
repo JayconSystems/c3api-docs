@@ -41,7 +41,8 @@ resourceTypes:
       get:
         is: [
           searchable: {
-            example: "[\"username\", \"jackson\", \"=\"]"
+            example: "[[\"mac\", \"ab1%\", \"like\"],[\"name\",
+	    \"Lobby\", \"=\"]]"
           },
           pageable,
           orderable
@@ -199,7 +200,7 @@ traits:
       queryParameters:
         query:
           description: |
-            JSON array [{"field1","value1","operator1"},{"field2","value2","operator2"},...,{"fieldN","valueN","operatorN"}]
+            JSON array [["field1","value1","operator1"],["field2","value2","operator2"],...,["fieldN","valueN","operatorN"]]
           example: |
             <<example>>
   - orderable:
