@@ -39,6 +39,13 @@ resourceTypes:
   - collection:
       description: Collection of available <<resourcePathName>>
       get:
+        is: [
+          searchable: {
+            example: "[\"username\", \"jackson\", \"=\"]"
+          },
+          pageable,
+          orderable
+        ]
         description: Get a list of <<resourcePathName>>
         body:
           application/json:
@@ -71,6 +78,13 @@ resourceTypes:
   - collection-readonly:
       description: Collection of <<resourcePathName>>
       get:
+        is: [
+          searchable: {
+            example: "[\"username\", \"jackson\", \"=\"]"
+          },
+          pageable,
+          orderable
+        ]
         description: Get a list of <<resourcePathName>>
         body:
           application/json:
@@ -141,14 +155,6 @@ resourceTypes:
     collection:
       exampleCollection: !include user-collection.sample
       exampleItem: !include user.sample
-  get:
-    is: [
-          searchable: {
-            description: "with valid fields: username",
-            example: "[\"username\", \"jackson\", \"=\"]"
-          },
-          pageable
-        ]
   /{user_id}:
     type:
       collection-item:
@@ -159,14 +165,6 @@ resourceTypes:
     collection:
       exampleCollection: !include listener-collection.sample
       exampleItem: !include listener.sample
-  get:
-    is: [
-          searchable: {
-            description: "with valid fields: mac, zone_id, missing",
-            example: "[\"zone_id\", \"24\", \"=\"]"
-          },
-          pageable
-        ]
   /{listener_id}:
     type:
       collection-item:
@@ -177,14 +175,6 @@ resourceTypes:
     collection:
       exampleCollection: !include beacon-collection.sample
       exampleItem: !include beacon.sample
-  get:
-    is: [
-          searchable: {
-            description: "with valid fields: mac, major, minor, uuid, missing, last_battery, zone_id",
-            example: "[\"zone_id\", \"24\", \"=\"]"
-          },
-          pageable
-        ]
   /{beacon_id}:
     type:
       collection-item:
@@ -193,22 +183,12 @@ resourceTypes:
       type:
         collection-readonly:
           exampleCollection: !include history-collection.sample
-      get:
-        is: [
-              pageable,
-              searchable: {
-                description: "with valid fields: timestamp, zone_id, state",
-                example: "[\"zone_id\", \"24\", \"=\"]"
-              }
-            ]
 
 /zones:
   type:
     collection:
       exampleCollection: !include zone-collection.sample
       exampleItem: !include zone.sample
-  get:
-    is: [ pageable ]
   /{zone_id}:
     type:
       collection-item:
@@ -219,14 +199,13 @@ traits:
       queryParameters:
         query:
           description: |
-            JSON array [{"field1","value1","operator1"},{"field2","value2","operator2"},...,{"fieldN","valueN","operatorN"}] <<description>>
+            JSON array [{"field1","value1","operator1"},{"field2","value2","operator2"},...,{"fieldN","valueN","operatorN"}]
           example: |
             <<example>>
   - orderable:
       queryParameters:
-        orderBy:
-          description: |
-            Order by field: <<fieldsList>>
+        orderby:
+          description: Order by field
           type: string
           required: false
         order:

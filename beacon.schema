@@ -13,6 +13,10 @@
 	    "type": "boolean",
 	    "required": false
 	},
+	"category_id": {
+	    "type": "integer",
+	    "required": false
+	},
 	"name": {
 	    "type": "string",
 	    "required": true
