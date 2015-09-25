@@ -3,38 +3,7 @@
 title: C3 Beacon
 baseUri: http://api.c3wireless.com/{version}
 version: v2
-securitySchemes:
-    - oauth_2_0:
-        description: |
-            C3 supports OAuth 2.0 for authenticating all API requests.
-        type: OAuth 2.0
-        describedBy:
-            headers:
-                Authorization:
-                    description: |
-                       Used to send a valid OAuth 2 access token. Do not use
-                       with the "access_token" query string parameter.
-                    type: string
-            queryParameters:
-                access_token:
-                    description: |
-                       Used to send a valid OAuth 2 access token. Do not use together with
-                       the "Authorization" header
-                    type: string
-            responses:
-                401:
-                    description: |
-                        Bad or expired token. This can happen if the user or C3
-                        revoked or expired an access token. To fix, you should re-
-                        authenticate the user.
-                403:
-                    description: |
-                        Bad OAuth request (wrong consumer key, bad nonce, expired
-                        timestamp...). Unfortunately, re-authenticating the user won't help here.
-        settings:
-          authorizationUri: https://{baseUri}/oauth2/authorize
-          accessTokenUri: https://{baseUri/oauth2/token
-          authorizationGrants: [ code, token ]
+
 resourceTypes:
   - collection:
       description: Collection of available <<resourcePathName>>
@@ -42,7 +11,7 @@ resourceTypes:
         is: [
           searchable: {
             example: "[[\"mac\", \"ab1%\", \"like\"],[\"name\",
-	    \"Lobby\", \"=\"]]"
+            \"Lobby\", \"=\"]]"
           },
           pageable,
           orderable
@@ -194,6 +163,16 @@ resourceTypes:
     type:
       collection-item:
         exampleItem: !include zone.sample
+    /listeners:
+      type:
+        collection:
+          exampleCollection: !include listener-collection.sample
+          exampleItem: !include listener.sample
+    /beacons:
+      type:
+        collection:
+          exampleCollection: beacon-collection.sample
+          exampleItem: !include beacon.sample
 
 traits:
   - searchable:

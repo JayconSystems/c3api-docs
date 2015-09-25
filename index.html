@@ -1890,4 +1890,462 @@
     "status": 404,
     "error": "Not Found"
 }
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_zones__zone_id__listeners"><span class="parent">/zones/{zone_id}</span>/listeners</a> <span class="methods"><a href="#zones__zone_id__listeners_get"><span class="badge badge_get">get</span></a> <a href="#zones__zone_id__listeners_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_zones__zone_id__listeners" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Collection of available listeners</p></div><div class="list-group"><div onclick="window.location.href = '#zones__zone_id__listeners_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get a list of listeners</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#zones__zone_id__listeners_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a new listener</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="zones__zone_id__listeners_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/zones/{zone_id}</span>/listeners</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get a list of listeners</p></div><ul class="nav nav-tabs"><li class="active"><a href="#zones__zone_id__listeners_get_request" data-toggle="tab">Request</a></li><li><a href="#zones__zone_id__listeners_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="zones__zone_id__listeners_get_request"><h3>URI Parameters</h3><ul><li><strong>zone_id</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>orderby</strong>: <em>(string)</em><p>Order by field</p></li><li><strong>order</strong>: <em>(one of desc, asc - default: desc)</em><p>Order</p></li><li><strong>offset</strong>: <em>(integer)</em><p>Skip over a number of elements by specifying an offset value for the query</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li><li><strong>limit</strong>: <em>(integer - default: 10)</em><p>Limit the number of elements on the response</p><p><strong>Example</strong>:</p><pre><code>80</code></pre></li><li><strong>query</strong>: <em>(string)</em><p>JSON array [["field1","value1","operator1"],["field2","value2","operator2"],...,["fieldN","valueN","operatorN"]]</p><p><strong>Example</strong>:</p><pre>[["mac", "ab1%", "like"],["name","Lobby", "="]]
+</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Type: text/html</strong></p></div><div class="tab-pane" id="zones__zone_id__listeners_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://api.c3wireless.com/",
+    "required": true,
+    "properties": {
+        "data": {
+            "type": "array",
+            "required": true,
+            "items": {
+                "type": "object",
+                "properties": {
+        	    "id": {
+			"type": "integer",
+			"required": false
+		    },
+		    "disabled": {
+			"type": "boolean",
+			"required": false
+		    },
+		    "state": {
+			"type": "string",
+			"required": false
+		    },
+		    "name": {
+			"type": "string",
+			"required": true
+		    },
+		    "mac": {
+			"type": "string",
+			"required": true,
+			"minLength": 12,
+			"maxLength": 12
+		    },
+		    "description": {
+			"type": "string",
+			"required": false
+		    },
+		    "keywords": {
+			"type": "string",
+			"required": false
+		    },
+		    "map_x": {
+			"type": "number",
+			"required": false
+		    },
+		    "map_y": {
+			"type": "number",
+			"required": false
+		    },
+		    "zone_id": {
+			"type": "integer",
+			"required": false
+		    },
+		    "missing": {
+			"type": "boolean",
+			"required": false
+		    }
+		}
+	    }
+	},
+	"status": {
+	    "type": "integer",
+	    "required": true
+	},
+	"error": {
+	    "type": "string",
+	    "required": false
+        }
+    }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "data": [
+	{
+	    "id": 17
+	    "disabled": false
+	    "name": "Lobby"
+	    "mac": "0123456789ab"
+	    "map_x": 100.384
+	    "map_y": 203.23
+	    "zone_id": 17
+	    "missing": false
+	},
+	{
+	    "id": 21
+	    "disabled": false
+	    "name": "Foyer"
+	    "mac": "23456789abcd"
+	    "map_x": 90.384
+	    "map_y": 213.23
+	    "zone_id": 17
+	    "missing": false
+	}
+    ],
+    "status": 200
+}
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="zones__zone_id__listeners_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/zones/{zone_id}</span>/listeners</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a new listener</p></div><ul class="nav nav-tabs"><li class="active"><a href="#zones__zone_id__listeners_post_request" data-toggle="tab">Request</a></li><li><a href="#zones__zone_id__listeners_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="zones__zone_id__listeners_post_request"><h3>URI Parameters</h3><ul><li><strong>zone_id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://api.c3wireless.com",
+    "required": true,
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "required": false
+        },
+	"disabled": {
+	    "type": "boolean",
+	    "required": false
+	},
+	"name": {
+	    "type": "string",
+	    "required": true
+	},
+	"mac": {
+	    "type": "string",
+	    "required": true,
+	    "minLength": 12,
+	    "maxLength": 12
+	},
+	"description": {
+	    "type": "string",
+	    "required": false
+	},
+	"keywords": {
+	    "type": "string",
+	    "required": false
+	},
+	"map_x": {
+	    "type": "number",
+	    "required": false
+	},
+	"map_y": {
+	    "type": "number",
+	    "required": false
+	},
+	"zone_id": {
+	    "type": "integer",
+	    "required": false
+	},
+	"missing": {
+	    "type": "boolean",
+	    "required": false
+	}
+    }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "id": 17
+    "disabled": false
+    "name": "Lobby"
+    "mac": "0123456789ab"
+    "map_x": 100.384
+    "map_y": 203.23
+    "zone_id": 17
+    "missing": false
+}
+</code></pre></div><div class="tab-pane" id="zones__zone_id__listeners_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://api.c3wireless.com",
+    "required": true,
+    "properties": {
+        "id": {
+            "type": "integer",
+            "required": false
+        },
+        "error": {
+            "type": "string",
+            "required": false
+        },
+        "status": {
+            "type": "number",
+            "required": true
+        }
+    }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "id": 21,
+    "status": 201
+}
+    
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Error in submitted data</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://api.c3wireless.com",
+    "required": true,
+    "properties": {
+        "id": {
+            "type": "integer",
+            "required": false
+        },
+        "error": {
+            "type": "string",
+            "required": false
+        },
+        "status": {
+            "type": "number",
+            "required": true
+        }
+    }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "status": 400,
+    "error": "Required field missing."
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_zones__zone_id__beacons"><span class="parent">/zones/{zone_id}</span>/beacons</a> <span class="methods"><a href="#zones__zone_id__beacons_get"><span class="badge badge_get">get</span></a> <a href="#zones__zone_id__beacons_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_zones__zone_id__beacons" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Collection of available beacons</p></div><div class="list-group"><div onclick="window.location.href = '#zones__zone_id__beacons_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get a list of beacons</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#zones__zone_id__beacons_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a new beacon</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="zones__zone_id__beacons_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/zones/{zone_id}</span>/beacons</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get a list of beacons</p></div><ul class="nav nav-tabs"><li class="active"><a href="#zones__zone_id__beacons_get_request" data-toggle="tab">Request</a></li><li><a href="#zones__zone_id__beacons_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="zones__zone_id__beacons_get_request"><h3>URI Parameters</h3><ul><li><strong>zone_id</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>orderby</strong>: <em>(string)</em><p>Order by field</p></li><li><strong>order</strong>: <em>(one of desc, asc - default: desc)</em><p>Order</p></li><li><strong>offset</strong>: <em>(integer)</em><p>Skip over a number of elements by specifying an offset value for the query</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li><li><strong>limit</strong>: <em>(integer - default: 10)</em><p>Limit the number of elements on the response</p><p><strong>Example</strong>:</p><pre><code>80</code></pre></li><li><strong>query</strong>: <em>(string)</em><p>JSON array [["field1","value1","operator1"],["field2","value2","operator2"],...,["fieldN","valueN","operatorN"]]</p><p><strong>Example</strong>:</p><pre>[["mac", "ab1%", "like"],["name","Lobby", "="]]
+</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Type: text/html</strong></p></div><div class="tab-pane" id="zones__zone_id__beacons_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://api.c3wireless.com/",
+    "required": true,
+    "properties": {
+        "data": {
+            "type": "array",
+            "required": true,
+            "items": {
+                "type": "object",
+		"properties": {
+		    "id": {
+			"type": "integer",
+			"required": false
+		    },
+		    "disabled": {
+			"type": "boolean",
+			"required": false
+		    },
+		    "name": {
+			"type": "string",
+			"required": true
+		    },
+		    "state": {
+			"type": "string",
+			"required": false
+		    },
+		    "categoryid": {
+			"type": "integer",
+			"required": false
+		    },
+		    "subcategoryid": {
+			"type": "integer",
+			"required": false
+		    },
+		    "mac": {
+			"type": "string",
+			"required": true,
+			"minLength": 17,
+			"maxLength": 17
+		    },
+		    "major": {
+			"type": "integer",
+			"required": true
+		    },
+		    "minor": {
+			"type": "integer",
+			"required": true
+		    },
+		    "description": {
+			"type": "string",
+			"required": false
+		    },
+		    "keywords": {
+			"type": "string",
+			"required": false
+		    },
+		    "last_battery": {
+			"type": "integer",
+			"required": false,
+			"maxValue": 100,
+			"minValue": 0
+		    },
+		    "map_x": {
+			"type": "number",
+			"required": false
+		    },
+		    "map_y": {
+			"type": "number",
+			"required": false
+		    },
+		    "zone_id": {
+			"type": "integer",
+			"required": false
+		    },
+		    "uuid": {
+			"type": "string",
+			"required": true,
+			"maxLength": 16,
+			"minLength": 16
+		    },
+		    "missing": {
+			"type": "boolean",
+			"required": false
+		    }
+		}
+	    }
+	},
+	"status": {
+	    "type": "integer",
+	    "required": true
+	},
+	"error": {
+	    "type": "string",
+	    "required": false
+        }
+    }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>beacon-collection.sample</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="zones__zone_id__beacons_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/zones/{zone_id}</span>/beacons</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a new beacon</p></div><ul class="nav nav-tabs"><li class="active"><a href="#zones__zone_id__beacons_post_request" data-toggle="tab">Request</a></li><li><a href="#zones__zone_id__beacons_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="zones__zone_id__beacons_post_request"><h3>URI Parameters</h3><ul><li><strong>zone_id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://api.c3wireless.com",
+    "required": true,
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "required": false
+        },
+	"disabled": {
+	    "type": "boolean",
+	    "required": false
+	},
+	"category_id": {
+	    "type": "integer",
+	    "required": false
+	},
+	"name": {
+	    "type": "string",
+	    "required": true
+	},
+	"state": {
+	    "type": "string",
+	    "required": false
+	},
+	"categoryid": {
+	    "type": "integer",
+	    "required": false
+	},
+	"subcategoryid": {
+	    "type": "integer",
+	    "required": false
+	},
+	"mac": {
+	    "type": "string",
+	    "required": true,
+	    "minLength": 17,
+	    "maxLength": 17
+	},
+	"major": {
+	    "type": "integer",
+	    "required": true
+	},
+	"minor": {
+	    "type": "integer",
+	    "required": true
+	},
+	"description": {
+	    "type": "string",
+	    "required": false
+	},
+	"keywords": {
+	    "type": "string",
+	    "required": false
+	},
+	"last_battery": {
+	    "type": "integer",
+	    "required": false,
+	    "maxValue": 100,
+	    "minValue": 0
+	},
+	"map_x": {
+	    "type": "number",
+	    "required": false
+	},
+	"map_y": {
+	    "type": "number",
+	    "required": false
+	},
+	"zone_id": {
+	    "type": "integer",
+	    "required": false
+	},
+	"uuid": {
+	    "type": "string",
+	    "required": true,
+	    "maxLength": 16,
+	    "minLength": 16
+	},
+	"missing": {
+	    "type": "boolean",
+	    "required": false
+	}
+    }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "id": 17,
+    "name": "Dr. Brown",
+    "categoryid": 5,
+    "mac": "01:23:45:67:89:ab",
+    "major": 21,
+    "minor": 17,
+    "description": "Beacon embedded in Dr. Trevone Brown&#39;s badge",
+    "last_battery": 67,
+    "map_x": 267.87,
+    "map_y": 2057.44,
+    "zone_id": 12,
+    "uuid": "0123456789abcdef",
+    "missing": false
+}
+</code></pre></div><div class="tab-pane" id="zones__zone_id__beacons_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://api.c3wireless.com",
+    "required": true,
+    "properties": {
+        "id": {
+            "type": "integer",
+            "required": false
+        },
+        "error": {
+            "type": "string",
+            "required": false
+        },
+        "status": {
+            "type": "number",
+            "required": true
+        }
+    }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "id": 21,
+    "status": 201
+}
+    
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Error in submitted data</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://api.c3wireless.com",
+    "required": true,
+    "properties": {
+        "id": {
+            "type": "integer",
+            "required": false
+        },
+        "error": {
+            "type": "string",
+            "required": false
+        },
+        "status": {
+            "type": "number",
+            "required": true
+        }
+    }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "status": 400,
+    "error": "Required field missing."
+}
 </code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#users">/users</a></li><li><a href="#listeners">/listeners</a></li><li><a href="#beacons">/beacons</a></li><li><a href="#zones">/zones</a></li></ul></div></div></div></div></body></html>
