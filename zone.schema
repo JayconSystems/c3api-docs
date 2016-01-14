@@ -9,21 +9,13 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
-	    "required": false
-	},
 	"name": {
 	    "type": "string",
-	    "required": true
+	    "required": false
 	},
-	"grid_string": {
+	"geom": {
 	    "type": "string",
-	    "required": true
-	},
-	"color": {
-	    "type": "string",
-	    "required": "true"
+	    "required": false
 	}
     }
 }

@@ -9,14 +9,6 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
-	    "required": false
-	},
-	"category_id": {
-	    "type": "integer",
-	    "required": false
-	},
 	"name": {
 	    "type": "string",
 	    "required": true
@@ -25,19 +17,13 @@
 	    "type": "string",
 	    "required": false
 	},
-	"categoryid": {
+	"owner_id": {
 	    "type": "integer",
 	    "required": false
 	},
-	"subcategoryid": {
-	    "type": "integer",
+	"last_seen": {
+	    "type": "timestamp",
 	    "required": false
-	},
-	"mac": {
-	    "type": "string",
-	    "required": true,
-	    "minLength": 17,
-	    "maxLength": 17
 	},
 	"major": {
 	    "type": "integer",
@@ -51,22 +37,14 @@
 	    "type": "string",
 	    "required": false
 	},
-	"keywords": {
-	    "type": "string",
-	    "required": false
-	},
-	"last_battery": {
+	"battery": {
 	    "type": "integer",
 	    "required": false,
 	    "maxValue": 100,
 	    "minValue": 0
 	},
-	"map_x": {
-	    "type": "number",
-	    "required": false
-	},
-	"map_y": {
-	    "type": "number",
+	"geom": {
+	    "type": "string",
 	    "required": false
 	},
 	"zone_id": {
@@ -78,10 +56,6 @@
 	    "required": true,
 	    "maxLength": 16,
 	    "minLength": 16
-	},
-	"missing": {
-	    "type": "boolean",
-	    "required": false
 	}
     }
 }

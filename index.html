@@ -1,4 +1,4 @@
-<!DOCTYPE HTML><html><head><title>C3 Beacon API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 2.0.2"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
+<!DOCTYPE HTML><html><head><title>C3 Beacon API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 2.1.2"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
       $(document).ready(function() {
         $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
           hljs.highlightBlock(block);
@@ -27,9 +27,11 @@
 
         // remove url fragment on modal hide
         $('.modal').on('hidden.bs.modal', function() {
-          if(history && history.replaceState) {
-            history.replaceState({}, '', '#');
-          }
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
         });
       });
     </script><style>
@@ -599,8 +601,16 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
+	"owner_id": {
+	    "type": "integer",
+	    "required": false
+	},
+	"last_seen": {
+	    "type": "timestamp",
+	    "required": false
+	},
+	"state": {
+	    "type": "string",
 	    "required": false
 	},
 	"name": {
@@ -617,37 +627,24 @@
 	    "type": "string",
 	    "required": false
 	},
-	"keywords": {
+	"geom": {
 	    "type": "string",
-	    "required": false
-	},
-	"map_x": {
-	    "type": "number",
-	    "required": false
-	},
-	"map_y": {
-	    "type": "number",
 	    "required": false
 	},
 	"zone_id": {
 	    "type": "integer",
 	    "required": false
-	},
-	"missing": {
-	    "type": "boolean",
-	    "required": false
 	}
     }
 }
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
-    "id": 17
-    "disabled": false
-    "name": "Lobby"
-    "mac": "0123456789ab"
-    "map_x": 100.384
-    "map_y": 203.23
-    "zone_id": 17
-    "missing": false
+    "id": 17,
+    "name": "Lobby",
+    "mac": "0123456789ab",
+    "geom": "0101000020110F00009E584C953E773041F4B0867357D15541",
+    "zone_id": 17,
+    "state": false,
+    "owner_id": null
 }
 </code></pre></div><div class="tab-pane" id="listeners_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
     "type": "object",
@@ -709,8 +706,16 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
+	"owner_id": {
+	    "type": "integer",
+	    "required": false
+	},
+	"last_seen": {
+	    "type": "timestamp",
+	    "required": false
+	},
+	"state": {
+	    "type": "string",
 	    "required": false
 	},
 	"name": {
@@ -727,37 +732,24 @@
 	    "type": "string",
 	    "required": false
 	},
-	"keywords": {
+	"geom": {
 	    "type": "string",
-	    "required": false
-	},
-	"map_x": {
-	    "type": "number",
-	    "required": false
-	},
-	"map_y": {
-	    "type": "number",
 	    "required": false
 	},
 	"zone_id": {
 	    "type": "integer",
 	    "required": false
-	},
-	"missing": {
-	    "type": "boolean",
-	    "required": false
 	}
     }
 }
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
-    "id": 17
-    "disabled": false
-    "name": "Lobby"
-    "mac": "0123456789ab"
-    "map_x": 100.384
-    "map_y": 203.23
-    "zone_id": 17
-    "missing": false
+    "id": 17,
+    "name": "Lobby",
+    "mac": "0123456789ab",
+    "geom": "0101000020110F00009E584C953E773041F4B0867357D15541",
+    "zone_id": 17,
+    "state": false,
+    "owner_id": null
 }
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Requested listener not found</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
     "type": "object",
@@ -794,8 +786,16 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
+	"owner_id": {
+	    "type": "integer",
+	    "required": false
+	},
+	"last_seen": {
+	    "type": "timestamp",
+	    "required": false
+	},
+	"state": {
+	    "type": "string",
 	    "required": false
 	},
 	"name": {
@@ -812,37 +812,24 @@
 	    "type": "string",
 	    "required": false
 	},
-	"keywords": {
+	"geom": {
 	    "type": "string",
-	    "required": false
-	},
-	"map_x": {
-	    "type": "number",
-	    "required": false
-	},
-	"map_y": {
-	    "type": "number",
 	    "required": false
 	},
 	"zone_id": {
 	    "type": "integer",
 	    "required": false
-	},
-	"missing": {
-	    "type": "boolean",
-	    "required": false
 	}
     }
 }
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
-    "id": 17
-    "disabled": false
-    "name": "Lobby"
-    "mac": "0123456789ab"
-    "map_x": 100.384
-    "map_y": 203.23
-    "zone_id": 17
-    "missing": false
+    "id": 17,
+    "name": "Lobby",
+    "mac": "0123456789ab",
+    "geom": "0101000020110F00009E584C953E773041F4B0867357D15541",
+    "zone_id": 17,
+    "state": false,
+    "owner_id": null
 }
 
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>listener not found</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
@@ -1062,14 +1049,6 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
-	    "required": false
-	},
-	"category_id": {
-	    "type": "integer",
-	    "required": false
-	},
 	"name": {
 	    "type": "string",
 	    "required": true
@@ -1078,19 +1057,13 @@
 	    "type": "string",
 	    "required": false
 	},
-	"categoryid": {
+	"owner_id": {
 	    "type": "integer",
 	    "required": false
 	},
-	"subcategoryid": {
-	    "type": "integer",
+	"last_seen": {
+	    "type": "timestamp",
 	    "required": false
-	},
-	"mac": {
-	    "type": "string",
-	    "required": true,
-	    "minLength": 17,
-	    "maxLength": 17
 	},
 	"major": {
 	    "type": "integer",
@@ -1104,22 +1077,14 @@
 	    "type": "string",
 	    "required": false
 	},
-	"keywords": {
-	    "type": "string",
-	    "required": false
-	},
-	"last_battery": {
+	"battery": {
 	    "type": "integer",
 	    "required": false,
 	    "maxValue": 100,
 	    "minValue": 0
 	},
-	"map_x": {
-	    "type": "number",
-	    "required": false
-	},
-	"map_y": {
-	    "type": "number",
+	"geom": {
+	    "type": "string",
 	    "required": false
 	},
 	"zone_id": {
@@ -1131,27 +1096,22 @@
 	    "required": true,
 	    "maxLength": 16,
 	    "minLength": 16
-	},
-	"missing": {
-	    "type": "boolean",
-	    "required": false
 	}
     }
 }
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
     "id": 17,
     "name": "Dr. Brown",
-    "categoryid": 5,
-    "mac": "01:23:45:67:89:ab",
     "major": 21,
     "minor": 17,
     "description": "Beacon embedded in Dr. Trevone Brown&#39;s badge",
-    "last_battery": 67,
-    "map_x": 267.87,
-    "map_y": 2057.44,
+    "battery": 67,
+    "geom": "0101000020110F00002026E17E467730411CAB5E4354D15541",
     "zone_id": 12,
     "uuid": "0123456789abcdef",
-    "missing": false
+    "state": null
+    "last_seen": 1452702712,
+    "owner_id": null
 }
 </code></pre></div><div class="tab-pane" id="beacons_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
     "type": "object",
@@ -1213,14 +1173,6 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
-	    "required": false
-	},
-	"category_id": {
-	    "type": "integer",
-	    "required": false
-	},
 	"name": {
 	    "type": "string",
 	    "required": true
@@ -1229,19 +1181,13 @@
 	    "type": "string",
 	    "required": false
 	},
-	"categoryid": {
+	"owner_id": {
 	    "type": "integer",
 	    "required": false
 	},
-	"subcategoryid": {
-	    "type": "integer",
+	"last_seen": {
+	    "type": "timestamp",
 	    "required": false
-	},
-	"mac": {
-	    "type": "string",
-	    "required": true,
-	    "minLength": 17,
-	    "maxLength": 17
 	},
 	"major": {
 	    "type": "integer",
@@ -1255,22 +1201,14 @@
 	    "type": "string",
 	    "required": false
 	},
-	"keywords": {
-	    "type": "string",
-	    "required": false
-	},
-	"last_battery": {
+	"battery": {
 	    "type": "integer",
 	    "required": false,
 	    "maxValue": 100,
 	    "minValue": 0
 	},
-	"map_x": {
-	    "type": "number",
-	    "required": false
-	},
-	"map_y": {
-	    "type": "number",
+	"geom": {
+	    "type": "string",
 	    "required": false
 	},
 	"zone_id": {
@@ -1282,27 +1220,22 @@
 	    "required": true,
 	    "maxLength": 16,
 	    "minLength": 16
-	},
-	"missing": {
-	    "type": "boolean",
-	    "required": false
 	}
     }
 }
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
     "id": 17,
     "name": "Dr. Brown",
-    "categoryid": 5,
-    "mac": "01:23:45:67:89:ab",
     "major": 21,
     "minor": 17,
     "description": "Beacon embedded in Dr. Trevone Brown&#39;s badge",
-    "last_battery": 67,
-    "map_x": 267.87,
-    "map_y": 2057.44,
+    "battery": 67,
+    "geom": "0101000020110F00002026E17E467730411CAB5E4354D15541",
     "zone_id": 12,
     "uuid": "0123456789abcdef",
-    "missing": false
+    "state": null
+    "last_seen": 1452702712,
+    "owner_id": null
 }
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Requested beacon not found</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
     "type": "object",
@@ -1339,14 +1272,6 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
-	    "required": false
-	},
-	"category_id": {
-	    "type": "integer",
-	    "required": false
-	},
 	"name": {
 	    "type": "string",
 	    "required": true
@@ -1355,19 +1280,13 @@
 	    "type": "string",
 	    "required": false
 	},
-	"categoryid": {
+	"owner_id": {
 	    "type": "integer",
 	    "required": false
 	},
-	"subcategoryid": {
-	    "type": "integer",
+	"last_seen": {
+	    "type": "timestamp",
 	    "required": false
-	},
-	"mac": {
-	    "type": "string",
-	    "required": true,
-	    "minLength": 17,
-	    "maxLength": 17
 	},
 	"major": {
 	    "type": "integer",
@@ -1381,22 +1300,14 @@
 	    "type": "string",
 	    "required": false
 	},
-	"keywords": {
-	    "type": "string",
-	    "required": false
-	},
-	"last_battery": {
+	"battery": {
 	    "type": "integer",
 	    "required": false,
 	    "maxValue": 100,
 	    "minValue": 0
 	},
-	"map_x": {
-	    "type": "number",
-	    "required": false
-	},
-	"map_y": {
-	    "type": "number",
+	"geom": {
+	    "type": "string",
 	    "required": false
 	},
 	"zone_id": {
@@ -1408,27 +1319,22 @@
 	    "required": true,
 	    "maxLength": 16,
 	    "minLength": 16
-	},
-	"missing": {
-	    "type": "boolean",
-	    "required": false
 	}
     }
 }
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
     "id": 17,
     "name": "Dr. Brown",
-    "categoryid": 5,
-    "mac": "01:23:45:67:89:ab",
     "major": 21,
     "minor": 17,
     "description": "Beacon embedded in Dr. Trevone Brown&#39;s badge",
-    "last_battery": 67,
-    "map_x": 267.87,
-    "map_y": 2057.44,
+    "battery": 67,
+    "geom": "0101000020110F00002026E17E467730411CAB5E4354D15541",
     "zone_id": 12,
     "uuid": "0123456789abcdef",
-    "missing": false
+    "state": null
+    "last_seen": 1452702712,
+    "owner_id": null
 }
 
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>beacon not found</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
@@ -1645,31 +1551,23 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
-	    "required": false
-	},
 	"name": {
 	    "type": "string",
-	    "required": true
+	    "required": false
 	},
-	"grid_string": {
+	"geom": {
 	    "type": "string",
-	    "required": true
-	},
-	"color": {
-	    "type": "string",
-	    "required": "true"
+	    "required": false
 	}
     }
 }
 	
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
-    "id": 17,
-    "disabled": false,
-    "name": "Entryway",
-    "grid_string": "1,2,3,67,8,191",
-    "color": "00ffaa"
+    "name": "Office", 
+    "id": 40, 
+    "owner_id": 4
+    "geom": "0103000020110F00000100000006000000A08438C58D2061C1969C5307FBE048416AC09BC48D2061C1016904A3F6E04841349957C88B2061C1295891A0F6E04841A02191C98B2061C1BD8BE004FBE04841A02191C98B2061C1BD8BE004FBE04841A08438C58D2061C1969C5307F
+BE04841"
 }
 </code></pre></div><div class="tab-pane" id="zones_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
     "type": "object",
@@ -1731,31 +1629,23 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
-	    "required": false
-	},
 	"name": {
 	    "type": "string",
-	    "required": true
+	    "required": false
 	},
-	"grid_string": {
+	"geom": {
 	    "type": "string",
-	    "required": true
-	},
-	"color": {
-	    "type": "string",
-	    "required": "true"
+	    "required": false
 	}
     }
 }
 	
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
-    "id": 17,
-    "disabled": false,
-    "name": "Entryway",
-    "grid_string": "1,2,3,67,8,191",
-    "color": "00ffaa"
+    "name": "Office", 
+    "id": 40, 
+    "owner_id": 4
+    "geom": "0103000020110F00000100000006000000A08438C58D2061C1969C5307FBE048416AC09BC48D2061C1016904A3F6E04841349957C88B2061C1295891A0F6E04841A02191C98B2061C1BD8BE004FBE04841A02191C98B2061C1BD8BE004FBE04841A08438C58D2061C1969C5307F
+BE04841"
 }
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Requested zone not found</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
     "type": "object",
@@ -1792,31 +1682,23 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
-	    "required": false
-	},
 	"name": {
 	    "type": "string",
-	    "required": true
+	    "required": false
 	},
-	"grid_string": {
+	"geom": {
 	    "type": "string",
-	    "required": true
-	},
-	"color": {
-	    "type": "string",
-	    "required": "true"
+	    "required": false
 	}
     }
 }
 	
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
-    "id": 17,
-    "disabled": false,
-    "name": "Entryway",
-    "grid_string": "1,2,3,67,8,191",
-    "color": "00ffaa"
+    "name": "Office", 
+    "id": 40, 
+    "owner_id": 4
+    "geom": "0103000020110F00000100000006000000A08438C58D2061C1969C5307FBE048416AC09BC48D2061C1016904A3F6E04841349957C88B2061C1295891A0F6E04841A02191C98B2061C1BD8BE004FBE04841A02191C98B2061C1BD8BE004FBE04841A08438C58D2061C1969C5307F
+BE04841"
 }
 
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>zone not found</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
@@ -1998,8 +1880,16 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
+	"owner_id": {
+	    "type": "integer",
+	    "required": false
+	},
+	"last_seen": {
+	    "type": "timestamp",
+	    "required": false
+	},
+	"state": {
+	    "type": "string",
 	    "required": false
 	},
 	"name": {
@@ -2016,37 +1906,24 @@
 	    "type": "string",
 	    "required": false
 	},
-	"keywords": {
+	"geom": {
 	    "type": "string",
-	    "required": false
-	},
-	"map_x": {
-	    "type": "number",
-	    "required": false
-	},
-	"map_y": {
-	    "type": "number",
 	    "required": false
 	},
 	"zone_id": {
 	    "type": "integer",
 	    "required": false
-	},
-	"missing": {
-	    "type": "boolean",
-	    "required": false
 	}
     }
 }
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
-    "id": 17
-    "disabled": false
-    "name": "Lobby"
-    "mac": "0123456789ab"
-    "map_x": 100.384
-    "map_y": 203.23
-    "zone_id": 17
-    "missing": false
+    "id": 17,
+    "name": "Lobby",
+    "mac": "0123456789ab",
+    "geom": "0101000020110F00009E584C953E773041F4B0867357D15541",
+    "zone_id": 17,
+    "state": false,
+    "owner_id": null
 }
 </code></pre></div><div class="tab-pane" id="zones__zone_id__listeners_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
     "type": "object",
@@ -2208,14 +2085,6 @@
             "type": "integer",
             "required": false
         },
-	"disabled": {
-	    "type": "boolean",
-	    "required": false
-	},
-	"category_id": {
-	    "type": "integer",
-	    "required": false
-	},
 	"name": {
 	    "type": "string",
 	    "required": true
@@ -2224,19 +2093,13 @@
 	    "type": "string",
 	    "required": false
 	},
-	"categoryid": {
+	"owner_id": {
 	    "type": "integer",
 	    "required": false
 	},
-	"subcategoryid": {
-	    "type": "integer",
+	"last_seen": {
+	    "type": "timestamp",
 	    "required": false
-	},
-	"mac": {
-	    "type": "string",
-	    "required": true,
-	    "minLength": 17,
-	    "maxLength": 17
 	},
 	"major": {
 	    "type": "integer",
@@ -2250,22 +2113,14 @@
 	    "type": "string",
 	    "required": false
 	},
-	"keywords": {
-	    "type": "string",
-	    "required": false
-	},
-	"last_battery": {
+	"battery": {
 	    "type": "integer",
 	    "required": false,
 	    "maxValue": 100,
 	    "minValue": 0
 	},
-	"map_x": {
-	    "type": "number",
-	    "required": false
-	},
-	"map_y": {
-	    "type": "number",
+	"geom": {
+	    "type": "string",
 	    "required": false
 	},
 	"zone_id": {
@@ -2277,27 +2132,22 @@
 	    "required": true,
 	    "maxLength": 16,
 	    "minLength": 16
-	},
-	"missing": {
-	    "type": "boolean",
-	    "required": false
 	}
     }
 }
 </code></pre><p><strong>Example</strong>:</p><pre><code>{
     "id": 17,
     "name": "Dr. Brown",
-    "categoryid": 5,
-    "mac": "01:23:45:67:89:ab",
     "major": 21,
     "minor": 17,
     "description": "Beacon embedded in Dr. Trevone Brown&#39;s badge",
-    "last_battery": 67,
-    "map_x": 267.87,
-    "map_y": 2057.44,
+    "battery": 67,
+    "geom": "0101000020110F00002026E17E467730411CAB5E4354D15541",
     "zone_id": 12,
     "uuid": "0123456789abcdef",
-    "missing": false
+    "state": null
+    "last_seen": 1452702712,
+    "owner_id": null
 }
 </code></pre></div><div class="tab-pane" id="zones__zone_id__beacons_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
     "type": "object",

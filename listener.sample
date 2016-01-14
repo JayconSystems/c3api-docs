@@ -1,10 +1,9 @@
 {
-    "id": 17
-    "disabled": false
-    "name": "Lobby"
-    "mac": "0123456789ab"
-    "map_x": 100.384
-    "map_y": 203.23
-    "zone_id": 17
-    "missing": false
+    "id": 17,
+    "name": "Lobby",
+    "mac": "0123456789ab",
+    "geom": "0101000020110F00009E584C953E773041F4B0867357D15541",
+    "zone_id": 17,
+    "state": false,
+    "owner_id": null
 }

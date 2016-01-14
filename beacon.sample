@@ -1,15 +1,14 @@
 {
     "id": 17,
     "name": "Dr. Brown",
-    "categoryid": 5,
-    "mac": "01:23:45:67:89:ab",
     "major": 21,
     "minor": 17,
     "description": "Beacon embedded in Dr. Trevone Brown's badge",
-    "last_battery": 67,
-    "map_x": 267.87,
-    "map_y": 2057.44,
+    "battery": 67,
+    "geom": "0101000020110F00002026E17E467730411CAB5E4354D15541",
     "zone_id": 12,
     "uuid": "0123456789abcdef",
-    "missing": false
+    "state": null
+    "last_seen": 1452702712,
+    "owner_id": null
 }
